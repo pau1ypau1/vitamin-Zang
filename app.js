@@ -6,6 +6,8 @@ var request = require("request");
 
 var phoneTo = '';
 var phoneFrom = '16139092162'; // Sprinkle's zang number
+app.use(express.static(__dirname + '/public'))
+
 /*
 var server = http.createServer(function (request, response) {
   response.writeHead(200, {"Content-Type": "text/plain"});
@@ -61,6 +63,7 @@ request(options, function (error, response, body) {
 
 	console.log(body);
 });
+
 
 //server.listen(8080, 'localhost');
 app.listen(8080, 'localhost');

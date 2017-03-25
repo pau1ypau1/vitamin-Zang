@@ -3,6 +3,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+app.use(express.static(__dirname + '/public'))
+
 /*
 var server = http.createServer(function (request, response) {
   response.writeHead(200, {"Content-Type": "text/plain"});
@@ -41,6 +43,7 @@ app.get('/', function(req, res){
   //res.send('hello World!')
   res.sendFile(path.join(__dirname + '/index.html'));
 });
+
 
 
 

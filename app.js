@@ -15,7 +15,7 @@ app.get('/', function(req, res){
   //res.write('Hello World!\n');
   //res.end();
   //res.send('hello World!')
-  res.sendFile(path.join(__dirname + '/dashboard.htm'));
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 

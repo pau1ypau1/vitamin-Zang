@@ -29,23 +29,19 @@ var connection = mysql.createConnection({
 connection.connect();
  
 var queryString = 'select * from vitaminzang.patient';
-var data;
  
 connection.query(queryString, function(err, rows, fields) {
     if (err) throw err;
     var data = '';
     for (var i in rows) {
-      data += '<tr><td>R/Y/G</td><td>' + rows[i].firstname + ' ' + rows[i].lastname + 
-        '</td><td>' + rows[i].room + '</td><td>' + rows[i].ward + '</td></tr>';
-        //console.log('First name: ', rows[i].firstname);
+      data += '<tr><td>R/Y/G</td><td>' + rows[i].firstname + ' ' + rows[i].lastname + '</td><td>' + rows[i].room + '</td><td>' + rows[i].ward + '</td></tr>';
     }
-    //console.log(a);
 });
  
 connection.end();
 
-fs = require('fs')
-fs.readFile('index.html', 'utf8', function (err,htmlData) {
+fs = require('fs');
+fs.readFile('index2.html', 'utf8', function (err,htmlData) {
     if (err) {
       return console.log(err);
     }
@@ -70,8 +66,9 @@ app.get('/', function(req, res){
   //res.end();
   //res.send('hello World!')
 
-  res.sendFile(path.join(__dirname + '/index2.html'));
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
+
 
 var options = {
 	method: 'POST',
@@ -89,7 +86,6 @@ request(options, function (error, response, body) {
 
 	console.log(body);
 });
-
 
 
 //server.listen(8080, 'localhost');

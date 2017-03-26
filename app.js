@@ -4,7 +4,6 @@ var app = express();
 var path = require('path');
 var request = require("request");
 var bodyParser  = require('body-parser');
-var sprintf = require("sprintf-js").sprintf;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -58,7 +57,8 @@ connection.query(queryString, function(err, rows, fields) {
 	    }
 	    
 	    // insert dynamic data
-		htmlData = this.sprintf(htmlData, data);
+	    var sprintf = require("sprintf-js").sprintf;
+		htmlData = sprintf(htmlData, data);
 		
 		// Display
 		app.get('/', function(req, res){

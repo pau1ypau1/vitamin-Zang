@@ -38,11 +38,11 @@ connection.query(queryString, function(err, rows, fields) {
 
     	if (typeof rows[i].status != "undefined") {
     		switch (rows[i].status) {
-    			case '1': data += '<img src="1.png" style="width:100px;" />';
+    			case '1': data += '<img src="/1.png" style="width:100px;" />';
     				break;
-    			case '2': data += '<img src="2.png" style="width:100px;" />';
+    			case '2': data += '<img src="/2.png" style="width:100px;" />';
     				break;
-    			case '3': data += '<img src="3.png" style="width:100px;" />';
+    			case '3': data += '<img src="/3.png" style="width:100px;" />';
     				break;
     		}
     	}

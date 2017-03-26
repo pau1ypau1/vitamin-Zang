@@ -84,11 +84,14 @@ connection.end();
 //console.log(htmlData.supplant({data: data}));
 
 
+app.get('/vitaminapi', function(req, res){ 
+  console.log(req.query);
+  res.redirect('/');
+});
 
 
-
-app.post('/phNum', function(req, res){ 
-  console.log(req.body.phoneNum);
+app.get('/phNum', function(req, res){ 
+  //console.log(req.query['phoneNum']);
   
   var options = {
   	method: 'POST',
@@ -98,7 +101,7 @@ app.post('/phNum', function(req, res){
   	'cache-control': 'no-cache',
   	'content-type': 'application/x-www-form-urlencoded',
   	authorization: 'Basic ' + new Buffer('AC7c889084457938dc50ca4f0f8b6bee22:deb05f2d8251479399ccb3fe2b1078ee', 'utf8').toString('base64') },
-  	form: { To: req.body.phoneNum, From: phoneFrom, Body: 'Hello, test' }
+  	form: { To: req.query['phoneNum'], From: phoneFrom, Body: 'Hello, test' }
   };
 
   request(options, function (error, response, body) {

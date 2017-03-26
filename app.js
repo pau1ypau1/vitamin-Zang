@@ -3,12 +3,18 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var request = require("request");
-
+var bodyParser  = require('body-parser');
 
 var phoneTo = '';
 var phoneFrom = '16139092162'; // Sprinkle's zang number
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
+
+
 
 
 var mysql      = require('mysql');
@@ -16,7 +22,7 @@ var connection = mysql.createConnection({
     host     : '54.237.239.59',
     user     : 'db',
     password : 'rhok',
-    database    : 'vitaminzang'
+    database : 'vitaminzang'
 });
 
 connection.connect();
@@ -79,6 +85,36 @@ connection.end();
 
 
 
+
+
+app.post('/phNum', function(req, res){ 
+  console.log(req.body.phoneNum);
+  
+  var options = {
+  	method: 'POST',
+  	url: 'https://api.zang.io/v2/Accounts/AC7c889084457938dc50ca4f0f8b6bee22/SMS/Messages.json',
+  	headers: 
+  	{
+  	'cache-control': 'no-cache',
+  	'content-type': 'application/x-www-form-urlencoded',
+  	authorization: 'Basic ' + new Buffer('AC7c889084457938dc50ca4f0f8b6bee22:deb05f2d8251479399ccb3fe2b1078ee', 'utf8').toString('base64') },
+  	form: { To: req.body.phoneNum, From: phoneFrom, Body: 'Hello, test' }
+  };
+
+  request(options, function (error, response, body) {
+  	if (error) throw new Error(error);
+
+  	console.log(body);
+  });
+  
+  
+  res.redirect('/');
+});
+
+
+
+
+/*
 var options = {
 	method: 'POST',
 	url: 'https://api.zang.io/v2/Accounts/AC7c889084457938dc50ca4f0f8b6bee22/SMS/Messages.json',
@@ -95,7 +131,7 @@ request(options, function (error, response, body) {
 
 	console.log(body);
 });
-
+*/
 
 //server.listen(8080, 'localhost');
 app.listen(8080, 'localhost');

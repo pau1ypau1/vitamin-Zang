@@ -17,26 +17,35 @@
 
 	<header>
 		<h1>VITAMIN ZANG</h1>
-			<ul>	
-				<li>Retirement Residence</li>
-				<li>
-					<div class="dropdown">
-						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Floor
-						<span class="caret"></span></button>
-						<ul class="dropdown-menu">
-							<li><a href="#">Floor 1</a></li>
-							<li><a href="#">Floor 2</a></li>
-							<li><a href="#">Floor 3</a></li>
-						</ul>
-					</div>
-				</li>
-				<li>Settings</li>
-				<li>Help</li>
-			</ul>			
 
+		<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Retirement Residence</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Floor</a>
+        <ul class="dropdown-menu">
+			<li><a href="#">Floor 1</a></li>
+			<li><a href="#">Floor 2</a></li>
+			<li><a href="#">Floor 3</a></li>
+		</ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Setting</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Help</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 	</header>
 
-	<body>
+	<body style="margin:10px 10px 10px 10px;">
 
 	<div class="table-responsive">
  		 <table class="table table-striped">
@@ -54,9 +63,13 @@
 
   		</table>
 	</div>
-  <form action="/phNum" method="get">
-    Phone number: <input type="text" name="phoneNum">
-    <input type="submit" value="Submit">
+  <form action="/phNum" method="get" style="width:200px;">
+
+  <div class="form-group">
+    <label for="phoneNum">Phone number:</label>
+    <input type="text" class="form-control" id="phoneNum" name="phoneNum">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
 	</body>
